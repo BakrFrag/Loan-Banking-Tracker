@@ -11,8 +11,8 @@ class LoanListSerializer(serializers.ModelSerializer):
 class LoanCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model=Loan;
-        fields="__all__";
-        read_only_fields=("duration","amount","currency","status")   
+        fields=("brrower",);
+           
        
 # brrower serializer
 class BrrowerSerializer(serializers.ModelSerializer):
@@ -23,4 +23,8 @@ class BrrowerSerializer(serializers.ModelSerializer):
 class InvestorSerializer(serializers.ModelSerializer):
     class Meta:
         model=Investor;
+        fields="__all__";
+class OfferSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Offer;
         fields="__all__";

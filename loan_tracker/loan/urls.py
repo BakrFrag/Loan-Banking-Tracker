@@ -7,4 +7,6 @@ urlpatterns = [
     path("investor/create/",views.InvestorCreateView.as_view(),name="create_investor"),
     path("brrower/list/",views.BrowerListView.as_view(),name="brrower_list"),
     path("brrower/create/",views.BrrowerCreateView.as_view(),name="create_brrower"),
+    path("offer/list/",views.OfferListView.as_view(),name="offer_list"),
+    path("offer/create/",views.OfferCreateView.as_view(),name="create_offer"),
 ]
