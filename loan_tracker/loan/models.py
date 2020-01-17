@@ -1,5 +1,7 @@
 from django.db import models
 
+# Annual Interest Rate 5000*(15/100) =750
+Annual_Interest_Rate=750;
 LOAN_CHOICES=(
 
     ("funded","Fundded"), # investor submit offer;
@@ -20,6 +22,9 @@ class Loan(models.Model):
     amount=models.IntegerField(default=5000.0);
     currency=models.CharField(default="$ Americian Dolar",max_length=256);
     status=models.CharField(choices=LOAN_CHOICES,max_length=256,null=True);
+    # field include total money (loan money + anaual interest rate)
+    # total = 750+5000=5750
+    total=models.IntegerField(default=5750);
     brrower=models.OneToOneField(Brrower,on_delete=models.CASCADE);
     def __str__(self):
         return f"Loan With Brrower {self.brrower.name} And Investor {self.investor.name}";
