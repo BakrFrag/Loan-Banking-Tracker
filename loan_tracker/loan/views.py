@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics;
 # Create your views here.
-fron loan.serializers import (LoanListSerializer,LoanCreateSerializer,BrrowerSerializer,InvestorSerializer);
+from loan.serializers import (LoanListSerializer,LoanCreateSerializer,BrrowerSerializer,InvestorSerializer);
 from loan.models import (Brrower,Loan,Investor);
 class LoanListView(generics.ListAPIView):
       model=Loan;
@@ -12,11 +12,11 @@ class LoanCreateView(generics.CreateAPIView):
     serializer_class=LoanCreateSerializer;
 class BrowerListView(generics.ListAPIView):
     model=Brrower;
-    serializer_class=BrowerSerializer;
+    serializer_class=BrrowerSerializer;
     queryset=Brrower.objects.all();
 class BrrowerCreateView(generics.CreateAPIView):
     model=Brrower;
-    serializer_class=BrowerSerializer;
+    serializer_class=BrrowerSerializer;
 class InvestorListView(generics.ListAPIView):
     model=Investor;
     queryset=Investor.objects.all();
