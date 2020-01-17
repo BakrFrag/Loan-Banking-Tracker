@@ -11,7 +11,7 @@ class LoanListSerializer(serializers.ModelSerializer):
 class LoanCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model=Loan;
-        exclude=('status');
+        exclude=('status',);
 # brrower serializer
 class BrrowerSerializer(serializers.ModelSerializer):
     class Meta:
