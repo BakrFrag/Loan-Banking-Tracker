@@ -1,4 +1,4 @@
-from loan.models import Brrower, Investor , Loan ;
+from loan.models import Brrower, Investor , Loan,Offer ;
 from rest_framework import serializers;
 
 # loan list/retrieve serializer Get Request
