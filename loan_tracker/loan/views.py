@@ -85,7 +85,9 @@ Create Offer
 Validation Add By First Check
 Money Mount = (Loan Amount + Fee ) = 5000 + 3 = 5003 
 If Investor.Balance >= 5003
-Will Create Loan
+Will Create Loan and decrease investor balance by 5003
+and change value of loan.total_money to be 5750
+(loan ammount + annual rate)
 Else APIException Will Riased
 POST REQUEST
 """
@@ -99,6 +101,6 @@ class OfferCreateView(generics.CreateAPIView):
             total=5750;
             return serializer.save(
                 self.loan.status=status,
-                self.loan.total=total,
+                self.loan.total_money=total,
                 self.investor.balance=balance);
         raise APIException("Investor Don't Have enough Balance Money")
