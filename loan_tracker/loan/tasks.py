@@ -11,7 +11,8 @@ def brrower_money_back_to_investor():
         offer_time=i.created;
         now=dt.now(timezone.utz);
         diff = (now - offer_time).days;
-        if diff > 0 and diff%30==0:
+        # if diff > 0 and diff%30==0:
+        if diff = 0:
             loan=i.loan;
             investor=i.investor;
             # 6 months  >> 5750
