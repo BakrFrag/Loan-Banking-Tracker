@@ -50,15 +50,22 @@ class Offer(models.Model):
     investor=models.OneToOneField(Investor,on_delete=models.CASCADE);
     created=models.DateTimeField(auto_now_add=True);
     
+"""
+this post save signal achive logic on offer
+if offer created :
+    investor balance will decrease by 5003 (loan ammount + fee)
+    also loan status will be funded;
+    loan total money will increase by 750 (annual interst )
+    total_money 5000+750=5750 
+"""
 
-
-# def set_new_values(sender,created,instance,**kwargs):
-#     if created:
-#         investor=instance.investor;
-#         loan=instance.loan;
-#         investor.balance -= 5003;
-#         investor.save();
-#         loan.status = "funded";
-#         loan.total_money += 750;
-#         loan.save();
-# post_save.connect(set_new_values,sender=Offer)
+def set_new_values(sender,created,instance,**kwargs):
+    if created:
+        investor=instance.investor;
+        loan=instance.loan;
+        investor.balance -= 5003;
+        investor.save();
+        loan.status = "funded";
+        loan.total_money += 750;
+        loan.save();
+post_save.connect(set_new_values,sender=Offer)
