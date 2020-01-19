@@ -18,7 +18,7 @@ class TestCreateLoan(TestCase):
         client=APIClient();
         response=client.post(
         reverse("create_loan"),
-        {"name":"test_brrower"},
+        {"brrower":"test_brrower"},
         format="json");
         self.assertEqual(response.status_code,400);
 """
@@ -37,7 +37,7 @@ class TestCreateBrrower(TestCase):
         client=APIClient();
         response=client.post(reverse("create_brrower"),
         {"name":"random_brrower"},format="json");
-        self.assertEqual(response.status_code,400);
+        self.assertEqual(response.status_code,201);
 """
 testcase to list all investors
 """
@@ -55,4 +55,4 @@ class TestCreateInvestor(TestCase):
         response=client.post(reverse("create_investor"),
         {"name":"test_investor","balance":7000},
         format="json");
-        self.assertEqual(response.status_code,400);
+        self.assertEqual(response.status_code,201);
