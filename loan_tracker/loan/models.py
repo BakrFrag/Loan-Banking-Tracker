@@ -61,5 +61,4 @@ def set_new_values(sender,created,instance,**kwargs):
         loan.status = "funded";
         loan.total_money += 750;
         loan.save();
-        #instance.update_related_values();
 post_save.connect(set_new_values,sender=Offer)
