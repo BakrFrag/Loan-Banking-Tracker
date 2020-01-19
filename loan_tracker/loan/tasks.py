@@ -6,15 +6,16 @@ from datetime import timezone;
 @periodic_task(run_every=(crontab(minute='*')),
 name="brrower_money_back_to_investor",ignore_result=True,)
 def brrower_money_back_to_investor():
-    offers=Offer.objcts.all().filter(status="funded");
-    for i in offers:
-        offer_time=i.created;
-        now=dt.now(timezone.utz);
+    offers=Offer.objects.all();
+    for offer in offers:
+        offer_time=offer.created;
+        now=dt.now(timezone.utc);
         diff = (now - offer_time).days;
-        # if diff > 0 and diff%30==0:
-        if diff = 0:
-            loan=i.loan;
-            investor=i.investor;
+        loan=offer.loan;
+        investor=offer.investor;
+        if diff > 0 and diff%30==0:
+       # used with debugging
+       # if diff == 0:
             # 6 months  >> 5750
             # 1000 1000 1000 1000 1000 750
             if loan.total_money > 1000:
@@ -22,9 +23,9 @@ def brrower_money_back_to_investor():
                 loan.save();
                 investor.balance += 1000;
                 investor.save();
-            elif loan < 1000 :
+            elif loan.total_money < 1000 :
                 loan.total_money = 0;
-                loan.status="completed";
+                loan.status = "completed";
                 loan.save();
                 investor.balance += 750;
                 investor.save();

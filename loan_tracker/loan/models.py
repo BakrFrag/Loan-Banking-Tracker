@@ -8,7 +8,7 @@ LOAN_CHOICES=(
     # investor submit offer
     ("funded","Fundded"), 
     # brrower return mony back to investor
-    ("complete","Completed") 
+    ("completed","Completed") 
 );
 
 class Brrower(models.Model):

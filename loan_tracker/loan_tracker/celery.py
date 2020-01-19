@@ -2,8 +2,6 @@ from __future__ import absolute_import
 import os
 from celery import Celery
 from django.conf import settings
-from celery.task.schedules import crontab
-from celery.decorators import periodic_task
 # set the default Django settings module for the 'celery' program.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'loan_tracker.settings')
 app = Celery('loan_tracker')
