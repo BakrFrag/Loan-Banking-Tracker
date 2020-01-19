@@ -19,7 +19,7 @@ class Investor(models.Model):
     balance=models.IntegerField();
     def __str__(self):
         return self.name;
-        
+
 """
 total_money field will hold the total money brrower have to 
 give back to investor 
@@ -30,7 +30,7 @@ when offer come to this loan the total_money will be
 class Loan(models.Model):
     duration=models.CharField(default="6 Months",max_length=256);
     amount=models.IntegerField(default=5000.0);
-    annual_rate = models.FloatField(0.15);
+    annual_rate = models.FloatField(default=0.15);
     currency=models.CharField(default="$ Americian Dolar",max_length=256);
     status=models.CharField(choices=LOAN_CHOICES,max_length=256,null=True);
     total_money=models.IntegerField(default=5000);
@@ -39,11 +39,11 @@ class Loan(models.Model):
         self.duration="6 Months";
         self.amount=5000.0;
         self.currency="$ Americian Dolar";
-        self..annual_rate=0.15;
+        self.annual_rate=0.15;
         super(Loan,self).save(*args,**kwargs);
 
     def __str__(self):
-        return f"Loan With Brrower {self.brrower.name} And Investor {self.investor.name}";
+        return f"Loan With Brrower {self.brrower.name} "
 class Offer(models.Model):
     loan=models.OneToOneField(Loan,on_delete=models.CASCADE);
     investor=models.OneToOneField(Investor,on_delete=models.CASCADE);

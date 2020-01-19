@@ -94,13 +94,4 @@ POST REQUEST
 class OfferCreateView(generics.CreateAPIView):
     model=Offer;
     serializer_class=OfferSerializer;
-    def perform_create(self,serializer):
-        if self.investor.balance >= 5003:
-            balance -= 5003;
-            status="funded";
-            total=5750;
-            return serializer.save(
-                self.loan.status=status,
-                self.loan.total_money=total,
-                self.investor.balance=balance);
-        raise APIException("Investor Don't Have enough Balance Money")
+    

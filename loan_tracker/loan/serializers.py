@@ -24,7 +24,17 @@ class InvestorSerializer(serializers.ModelSerializer):
     class Meta:
         model=Investor;
         fields="__all__";
+"""
+add validation on offer serializer to ensure that 
+investor balance have more than 5003 (loan amount + fee)
+"""
 class OfferSerializer(serializers.ModelSerializer):
     class Meta:
         model=Offer;
         fields="__all__";
+    def validate(self,data):
+        investor=data['investor'];
+        loan=data['loan'];
+        if investor.balance >= 5003:
+            return data;
+        raise serializers.ValidationError("Balance Of Investor Not Enought Money")
