@@ -1,0 +1,1 @@
+from loan.tracker.celery import app as celery_app
