@@ -1,6 +1,7 @@
 from django.db import models
 from django.dispatch import receiver;
 from django.db.models.signals import post_save;
+from django.urls import reverse;
 # Annual Interest Rate 5000*(15/100) =750
 Annual_Interest_Rate=750;
 LOAN_CHOICES=(
@@ -15,11 +16,17 @@ class Brrower(models.Model):
     name=models.CharField(max_length=256,unique=True);
     def __str__(self):
         return self.name;
+    def get_absolute_url(self):
+        return reverse("brrower", kwargs={"pk": self.pk})
+    
 class Investor(models.Model):
     name=models.CharField(max_length=256,unique=True);
     balance=models.IntegerField();
     def __str__(self):
         return self.name;
+    def get_absolute_url(self):
+        return reverse("investor", kwargs={"pk": self.pk})
+    
 
 """
 total_money field will hold the total money brrower have to 
@@ -45,10 +52,18 @@ class Loan(models.Model):
 
     def __str__(self):
         return f"Loan With Brrower {self.brrower.name} "
+    def get_absolute_url(self):
+        return reverse("loan", kwargs={"pk": self.pk})
+    
 class Offer(models.Model):
     loan=models.OneToOneField(Loan,on_delete=models.CASCADE);
     investor=models.OneToOneField(Investor,on_delete=models.CASCADE);
     created=models.DateTimeField(auto_now_add=True);
+    def __str__(self):
+        return f"Offer On Loan f{self.loan}";
+    def get_absolute_url(self):
+        return reverse("offer", kwargs={"pk": self.pk})
+    
     
 """
 this post save signal achive logic on offer
