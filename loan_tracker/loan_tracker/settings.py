@@ -29,6 +29,8 @@ INSTALLED_APPS = [
     'rest_framework',
     # add loan custom app
     'loan',
+    # rest-framework-swagger
+    'rest_framework_swagger',
 ]
 
 MIDDLEWARE = [
