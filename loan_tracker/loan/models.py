@@ -52,13 +52,13 @@ class Offer(models.Model):
     
 
 
-def set_new_values(sender,created,instance,**kwargs):
-    if created:
-        investor=instance.investor;
-        loan=instance.loan;
-        investor.balance -= 5003;
-        investor.save();
-        loan.status = "funded";
-        loan.total_money += 750;
-        loan.save();
-post_save.connect(set_new_values,sender=Offer)
+# def set_new_values(sender,created,instance,**kwargs):
+#     if created:
+#         investor=instance.investor;
+#         loan=instance.loan;
+#         investor.balance -= 5003;
+#         investor.save();
+#         loan.status = "funded";
+#         loan.total_money += 750;
+#         loan.save();
+# post_save.connect(set_new_values,sender=Offer)
