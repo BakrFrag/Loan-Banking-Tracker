@@ -1,5 +1,6 @@
 from django.db import models
-
+from django.dispatch import receiver;
+from django.db.models.signals import post_save;
 # Annual Interest Rate 5000*(15/100) =750
 Annual_Interest_Rate=750;
 LOAN_CHOICES=(
@@ -48,5 +49,17 @@ class Offer(models.Model):
     loan=models.OneToOneField(Loan,on_delete=models.CASCADE);
     investor=models.OneToOneField(Investor,on_delete=models.CASCADE);
     created=models.DateTimeField(auto_now_add=True);
-    def __str__(self):
-        return f"offer on {self.loan}";
+    
+
+
+def set_new_values(sender,created,instance,**kwargs):
+    if created:
+        investor=instance.investor;
+        loan=instance.loan;
+        investor.balance -= 5003;
+        investor.save();
+        loan.status = "funded";
+        loan.total_money += 750;
+        loan.save();
+        #instance.update_related_values();
+post_save.connect(set_new_values,sender=Offer)

@@ -1,1 +1,1 @@
-from loan_tracker.celery import app as celery_app
+# from loan_tracker.celery import app as celery_app
