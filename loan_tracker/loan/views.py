@@ -30,6 +30,16 @@ class LoanCreateView(generics.CreateAPIView):
     serializer_class=LoanCreateSerializer;
 
 """
+get one loan object by PK
+GET REQUEST
+"""
+class LoanApiView(generics.RetrieveAPIView):
+    model=Loan;
+    serializer_class=LoanListSerializer;
+    queryset=Loan.objects.all();
+    lookup_field="pk";
+
+"""
 List All Brrowers Or Custimize Brrower List 
 By Thier Names
 GET REQUEST
@@ -51,6 +61,15 @@ class BrrowerCreateView(generics.CreateAPIView):
     serializer_class=BrrowerSerializer;
 
 """
+brrower get single object
+GET REQUEST
+"""
+class BrrowerApiView(generics.RetrieveAPIView):
+    model=Brrower;
+    queryset=Brrower.objects.all();
+    serializer_class=BrrowerSerializer;
+    lookup_field="pk";
+"""
 List All Investors Or Just Custimize Them By Name
 GET REQUEST
 """    
@@ -71,6 +90,17 @@ POSTREQUEST
 class InvestorCreateView(generics.CreateAPIView):
     model=Investor;
     serializer_class=InvestorSerializer;
+
+"""
+investor get single object by PK
+GET Request
+"""
+class InvestorApiView(generics.RetrieveAPIView):
+    model=Investor;
+    queryset=Investor.objects.all();
+    serializer_class=InvestorSerializer;
+    lookup_field="pk";
+
 """
 List All Offers
 GET REQUEST
@@ -94,4 +124,12 @@ POST REQUEST
 class OfferCreateView(generics.CreateAPIView):
     model=Offer;
     serializer_class=OfferSerializer;
-    
+"""
+get single offer object
+GET REQUEST
+"""
+class OfferApiView(generics.RetrieveAPIView):
+    model=Offer;
+    queryset=Offer.objects.all();
+    lookup_field="pk";
+    serializer_class=OfferSerializer;
