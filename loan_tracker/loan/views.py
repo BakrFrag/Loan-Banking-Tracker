@@ -3,7 +3,7 @@ from rest_framework import generics;
 from rest_framework.exceptions import APIException;
 # Create your views here.
 from loan.serializers import (LoanListSerializer,
-LoanCreateSerializer,BrrowerSerializer,InvestorSerializer,OfferSerializer);
+LoanCreateSerializer,BrrowerSerializer,InvestorSerializer,OfferListSerializer,OfferCreateSerializer);
 from loan.models import (Brrower,Loan,Investor,Offer);
 
 """
@@ -17,8 +17,8 @@ class LoanListView(generics.ListAPIView):
       def get_queryset(self):
             status=self.request.GET.get('status',None);
             if status is not None:
-                return Loan.objects.filter(status=status);
-            return Loan.objects.all();
+                return Loan.objects.filter(status=status).order_by("-created");
+            return Loan.objects.all().order_by("-created");
 
 """
 create loan instance of loan model 
@@ -50,8 +50,8 @@ class BrowerListView(generics.ListAPIView):
     def get_queryset(self):
         name=self.request.GET.get('name',None)
         if name is not None:
-            return Brrower.objects.filter(name=name);
-        return Brrower.objects.all();
+            return Brrower.objects.filter(name=name).order_by("-created");
+        return Brrower.objects.all().order_by("-created");
 """
 Create Brrower 
 POST REQUEST
@@ -75,13 +75,12 @@ GET REQUEST
 """    
 class InvestorListView(generics.ListAPIView):
     model=Investor;
-    queryset=Investor.objects.all();
     serializer_class=InvestorSerializer;
     def get_queryset(self):
         name=self.request.GET.get('name',None)
         if name is not None:
-            return Investor.objects.filter(name=name);
-        return Investor.objects.all();
+            return Investor.objects.filter(name=name).order_by("-created");
+        return Investor.objects.all().order_by("-created");
         
 """
 Create Investor
@@ -107,7 +106,7 @@ GET REQUEST
 """
 class OfferListView(generics.ListAPIView):
     model=Offer;
-    serializer_class=OfferSerializer;
+    serializer_class=OfferListSerializer;
     queryset=Offer.objects.all();
 
 """
@@ -123,13 +122,13 @@ POST REQUEST
 """
 class OfferCreateView(generics.CreateAPIView):
     model=Offer;
-    serializer_class=OfferSerializer;
+    serializer_class=OfferCreateSerializer;
 """
 get single offer object
 GET REQUEST
 """
 class OfferApiView(generics.RetrieveAPIView):
     model=Offer;
-    queryset=Offer.objects.all();
+    queryset=Offer.objects.all().order_by("created");
     lookup_field="pk";
-    serializer_class=OfferSerializer;
+    serializer_class=OfferListSerializer;

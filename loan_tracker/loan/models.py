@@ -14,6 +14,7 @@ LOAN_CHOICES=(
 
 class Brrower(models.Model):
     name=models.CharField(max_length=256,unique=True);
+    created=models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.name;
     def get_absolute_url(self):
@@ -22,6 +23,7 @@ class Brrower(models.Model):
 class Investor(models.Model):
     name=models.CharField(max_length=256,unique=True);
     balance=models.IntegerField();
+    created=models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.name;
     def get_absolute_url(self):
@@ -43,6 +45,7 @@ class Loan(models.Model):
     status=models.CharField(choices=LOAN_CHOICES,max_length=256,null=True);
     total_money=models.IntegerField(default=5000);
     brrower=models.OneToOneField(Brrower,on_delete=models.CASCADE);
+    created=models.DateTimeField(auto_now_add=True)
     def save(self,*args,**kwargs):
         self.duration="6 Months";
         self.amount=5000.0;
