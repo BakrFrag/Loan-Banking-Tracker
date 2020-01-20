@@ -3,7 +3,10 @@ from celery.decorators import periodic_task
 from loan.models import (Loan,Brrower,Investor,Offer)
 from datetime import datetime as dt;
 from datetime import timezone;
-@periodic_task(run_every=(crontab(minute='*')),
+
+# execute it every day at midnight
+# run evry day at midnight
+@periodic_task(run_every=(crontab(minute=0, hour=0)),
 name="brrower_money_back_to_investor",ignore_result=True,)
 def brrower_money_back_to_investor():
     offers=Offer.objects.all();
@@ -14,8 +17,6 @@ def brrower_money_back_to_investor():
         loan=offer.loan;
         investor=offer.investor;
         if diff > 0 and diff%30==0:
-       # used with debugging
-       # if diff == 0:
             # 6 months  >> 5750
             # 1000 1000 1000 1000 1000 750
             if loan.total_money > 1000:

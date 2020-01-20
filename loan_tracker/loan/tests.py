@@ -18,8 +18,9 @@ class TestCreateLoan(TestCase):
         client=APIClient();
         response=client.post(
         reverse("create_loan"),
-        {"brrower":"test_brrower"},
+        {"brrower":"random_name"},
         format="json");
+        # no brrower random_name so status code 400
         self.assertEqual(response.status_code,400);
 """
 testcase to get list of all brrower
