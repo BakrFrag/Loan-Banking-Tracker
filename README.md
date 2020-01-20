@@ -171,7 +171,11 @@ pipenv shell
 ```
 pipenv install -r requirements.txt
 ```
-5.
+. if some thing gi wrong run 
+```
+pipenv install django djangorestframework celery celery[redis] coreapi
+```
+6.
 ``` 
 cd loan_tracker
 ```
@@ -205,6 +209,8 @@ and play with urls
 4. [Celery Library](https://docs.celeryproject.org/)
 
 > Used To Perform Periodic Tasks 
+6. [Coreapi](https://www.coreapi.org/)
+> Used To Build Documentation
 
 # Important Notes
 > All These URL Tested And Works Fine
