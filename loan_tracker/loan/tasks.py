@@ -24,7 +24,7 @@ def brrower_money_back_to_investor():
                 loan.save();
                 investor.balance += 1000;
                 investor.save();
-            elif loan.total_money < 1000 :
+            elif loan.total_money > 0 and loan.total_money < 1000 :
                 loan.total_money = 0;
                 loan.status = "completed";
                 loan.save();
