@@ -17,6 +17,7 @@ def brrower_money_back_to_investor():
         loan=offer.loan;
         investor=offer.investor;
         if diff > 0 and diff%30==0:
+        
             # 6 months  >> 5750
             # 1000 1000 1000 1000 1000 750
             if loan.total_money > 1000:
