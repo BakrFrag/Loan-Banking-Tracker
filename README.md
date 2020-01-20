@@ -171,7 +171,7 @@ pipenv shell
 ```
 pipenv install -r requirements.txt
 ```
-. if some thing gi wrong run 
+. if some thing go wrong run 
 ```
 pipenv install django djangorestframework celery celery[redis] coreapi
 ```
@@ -179,17 +179,24 @@ pipenv install django djangorestframework celery celery[redis] coreapi
 ``` 
 cd loan_tracker
 ```
-6. run development server
+7. applay migrations in database 
+```
+python manage.py makemigrations
+```
+```
+python manage.py migrate
+```
+8. run development server
 ```
 python manage.py runserver
 ```
-7. if you mant to check tests
+9. if you mant to check tests
 ```
 python manage.py test
 ```
-8. periodic tasks will be excute every day in background
+10. periodic tasks will be excute every day in background
 
-8. vist local host in your browser 
+11. vist local host in your browser 
 and play with urls 
 
 # Python Libraries
