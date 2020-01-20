@@ -224,12 +224,3 @@ and Behave As Expected
 
 > This Project Developed In DEVELOPMENT MODE and settings of it not Suitable For Production Enviroment
 
-# Table Of Contents 
-
-### Project Name
-### Project Description
-### How It Works
-### Prequests
-### Urls End Points
-### Python Used Libraries
-### Important Notes
