@@ -8,6 +8,11 @@ verify_ssl = true
 [packages]
 django = "*"
 djangorestframework = "*"
+celery = {extras = ["redis"],version = "*"}
+install = "*"
+django-rest-swagger = "*"
+coreapi = "*"
+reat-framework-swagger = "*"
 
 [requires]
 python_version = "3.6"
