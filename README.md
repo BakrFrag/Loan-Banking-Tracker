@@ -156,7 +156,7 @@ sudo pip3 install pipenv
 ```
 2. clone project from github
 ```
-git clone [url]
+git clone https://github.com/BakrFrag/Loan-Tracker
 ```
 3. cd into project folder
 ```
