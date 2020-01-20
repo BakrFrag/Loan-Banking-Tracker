@@ -29,8 +29,6 @@ INSTALLED_APPS = [
     'rest_framework',
     # add loan custom app
     'loan',
-    # rest-framework-swagger
-    'rest_framework_swagger',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +121,8 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Africa/Cairo';
 CELERY_CREATE_MISSING_QUEUES = True
+
+# rest framework
+
+
+REST_FRAMEWORK = { 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' }
