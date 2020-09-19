@@ -1,5 +1,5 @@
 # Project Name
-Loan Tracker
+Loan Banking Tracker
 # Project Description
 Handle Loan Requests By Brrowers And Offers From Investors
 Also Keep Track Of How Mony Get Back To Investors Monthly
